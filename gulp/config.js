@@ -44,15 +44,7 @@ module.exports = (function () {
             {
                 name: "master",
                 scripts: [
-                    projectPath + "scripts/components/novicell.js",
-                    projectPath + "scripts/components/novicell.debounce.js",
-                    projectPath + "scripts/components/novicell.visible.js",
-                    projectPath + "scripts/components/novicell.lazyloadResponsive.js",
-                    projectPath + "scripts/components/novicell.embed.js",
-                    projectPath + "scripts/components/novicell.overlay.js",
-                    projectPath + "scripts/components/novicell.cookieinfo.js",
-                    projectPath + "scripts/components/novicell.map.js",
-                    projectPath + "scripts/components/novicell.font.js",
+                    projectPath + "scripts/components/highlight.pack.js",
                     projectPath + "scripts/master.js"
                 ],
                 styles: [projectPath + preprocessor + "/master." + preprocessor],
@@ -152,14 +144,19 @@ module.exports = (function () {
         buildCopy: [{
             from: projectPath + "fonts/**/*",
             to: distPath  + "/fonts"
-        }],
+        },
+        {
+            from: projectPath + "html/includes/css/*",
+            to: distPath  + "/includes/css/"
+        },],
 
 
         // ------------- Tasks -------------
         loadTasks: [
             "bower", "typescript", "styles",
             "scripts", "images", "icons",
-            "copy", "watch", "build", "html", "html-escape"
+            "copy", "watch", "build",
+            "html", "html-escape"
         ],
         buildTasks: [
             "styles", "typescript", "scripts",

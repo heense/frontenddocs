@@ -1,9 +1,18 @@
-.element { ... }
+/* Bad example */
 .element-avatar { ... }
 .element-selected { ... }
 
-@media (min-width: 480px) {
-  .element { ...}
-  .element-avatar { ... }
-  .element-selected { ... }
+@media (min-width:@screen-md) {
+    .element { ...}
+    .element-avatar { ... }
+    .element-selected { ... }
+}
+
+/* Good example */
+.element {
+    ...
+
+    @media (min-width:@screen-md) {
+        ...
+    }
 }

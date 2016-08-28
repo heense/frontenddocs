@@ -1,0 +1,28 @@
+/**
+ * Example of most specific definitions
+ */
+
+#textpage form {/*Will select every form in #textpage*/}
+
+.new-form {
+    // Will get overwritten by the above definition, #textpage form
+    // This means we have to add #textpage infront of our class if we want to overrule
+}
+
+#textpage form.new-form {/*This, is now the most specific definition*/}
+
+/**
+ * Avoid the following
+ */
+
+// Using IDs in your CSS
+#textpage {...}
+
+// Nesting selectors
+.button {
+    ...
+    .text {...}
+}
+
+// Chaining selectors
+.button .text {...}

@@ -1,0 +1,22 @@
+/* Example of BEM in less */
+
+// Block
+.breadcrumb {
+    padding: 10px;
+    margin-bottom: 30px;
+
+    // Element
+    &__link {
+        display: inline-block;
+
+        & + &:before {
+            content: "/";
+            padding-top: 5px;
+            padding: 5px 0;
+            color: #666;
+        }
+
+        // Modifier
+        &--active {color: #000;}
+    }
+}

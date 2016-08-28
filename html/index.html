@@ -13,10 +13,9 @@
                 <li><a href="#html-encoding">Character encoding</a></li>
                 <li><a href="#html-ie-compatibility-mode">Internet Explorer compatibility mode</a></li>
                 <li><a href="#html-style-script">CSS and JavaScript includes</a></li>
-                <li><a href="#html-practicality">Practicality over purity</a></li>
                 <li><a href="#html-attribute-order">Attribute order</a></li>
                 <li><a href="#html-boolean-attributes">Boolean attributes</a></li>
-                <li><a href="#html-reducing-markup">Reducing markup</a></li>
+                <li><a href="#html-bem">BEM in HTML</a></li>
                 <li><a href="#html-javascript">JavaScript generated markup</a></li>
             </ul>
         </div>
@@ -25,11 +24,12 @@
             <ul>
                 <li><a href="#css-syntax">CSS syntax</a></li>
                 <li><a href="#css-declaration-order">Declaration order</a></li>
-                <li><a href="#css-import">Don't use @import</a></li>
                 <li><a href="#css-media-queries">Media query placement</a></li>
                 <li><a href="#css-prefixed-properties">Prefixed properties</a></li>
                 <li><a href="#css-single-declarations">Rules with single declarations</a></li>
                 <li><a href="#css-shorthand">Shorthand notation</a></li>
+                <li><a href="#css-specificity">Specificity</a>
+                <li><a href="#css-bem">BEM in Less</a></li>
                 <li><a href="#css-nesting">Nesting in Less and Sass</a></li>
                 <li><a href="#css-operators">Operators in Less and Sass</a></li>
                 <li><a href="#css-comments">Comments</a></li>
@@ -44,7 +44,8 @@
     <div class="section" id="golden-rule">
         <div class="col">
             <h2>Golden rule</h2>
-            <p>Enforce these, or your own, agreed upon guidelines at all times. Small or large, call out what's incorrect. For additions or contributions to this Code Guide, please <a href="https://github.com/mdo/code-guide/issues/new">open an issue on GitHub</a>.</p>
+            <p>Remember that these are guidelines, not rules set in stone.</p>
+            <p>Try to always enforce these guidelines. Small or large, call out what's incorrect. For additions or contributions to this Code Guide, please <a href="https://github.com/mdo/code-guide/issues/new">open an issue on GitHub</a>.</p>
         </div>
         <div class="col">
             <blockquote>
@@ -53,6 +54,27 @@
         </div>
     </div>
 
+
+    <div class="section" id="bem">
+        <div class="col">
+            <h2>BEM - Block, Element, Modifier</h2>
+            <p>BEM is methodology for naming conventions in HTML and CSS.</p>
+            <p>It gives us:</p>
+            <ul>
+                <li>A better understanding of the relationship between HTML and CSS</li>
+                <li>Makes projects easy scalable and maintanable</li>
+                <li>A way for all members of a project to name components more consistent</li>
+            </ul>
+            <p>We will dive into the details under each section of HTML and CSS.</p>
+        </div>
+        <div class="col">
+            <blockquote>
+                <p>Note that BEM is actually much much more than just a naming convention for CSS and markup.</p>
+                <p>Yandex, the original creators of BEM uses the full feature set of it, meaning also the javascript part. We won't be using that, as it differs entirely from how we write and work with javascript in general.</p>
+                <p><a href="https://en.bem.info/">Read more about BEM here.</a></p>
+            </blockquote>
+        </div>
+    </div>
 
 
     <div class="heading" id="html">
@@ -63,15 +85,14 @@
         <div class="col">
             <h3>Syntax</h3>
             <ul>
-                <li>Use soft tabs with two spaces—they're the only way to guarantee code renders the same in any environment.</li>
-                <li>Nested elements should be indented once (two spaces).</li>
-                <li>Always use double quotes, never single quotes, on attributes.</li>
-                <li>Don't include a trailing slash in self-closing elements—the <a href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag">HTML5 spec</a> says they're optional.</li>
-                <li>Don’t omit optional closing tags (e.g. <code>&lt;/li&gt;</code> or <code>&lt;/body&gt;</code>).</li>
+                <li>We use soft tabs with four spaces.</li>
+                <li>Nested elements should be indented once (four spaces).</li>
+                <li>For HTML, always use double quotes, never single quotes.</li>
+                <li>Don't include a trailing slash in self-closing elements — the <a href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag">HTML5 spec</a> says they're optional.</li>
             </ul>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/syntax.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/syntax.html')</code></pre>
         </div>
     </div>
 
@@ -81,7 +102,7 @@
             <p>Enforce standards mode and more consistent rendering in every browser possible with this simple doctype at the beginning of every HTML page.</p>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/doctype.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/doctype.html')</code></pre>
         </div>
     </div>
 
@@ -96,7 +117,7 @@
             <p>Head to Sitepoint for a <a href="http://reference.sitepoint.com/html/lang-codes">list of language codes</a>.</p>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/lang.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/lang.html')</code></pre>
         </div>
     </div>
 
@@ -107,7 +128,7 @@
             <p>For more information, <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e">read this awesome Stack Overflow article</a>.</p>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/ie-compatibility-mode.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/ie-compatibility-mode.html')</code></pre>
         </div>
     </div>
 
@@ -117,7 +138,7 @@
             <p>Quickly and easily ensure proper rendering of your content by declaring an explicit character encoding. When doing so, you may avoid using character entities in your HTML, provided their encoding matches that of the document (generally UTF-8).</p>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/encoding.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/encoding.html')</code></pre>
         </div>
     </div>
 
@@ -133,14 +154,7 @@
             </ul>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/style-script.html'){% endhighlight %}
-        </div>
-    </div>
-
-    <div class="section" id="html-practicality">
-        <div class="col">
-            <h3>Practicality over purity</h3>
-            <p>Strive to maintain HTML standards and semantics, but not at the expense of practicality. Use the least amount of markup with the fewest intricacies whenever possible.</p>
+            <pre><code class="html">@@include('../dist/includes/html/style-script.html')</code></pre>
         </div>
     </div>
 
@@ -159,7 +173,7 @@
             <p>Classes make for great reusable components, so they come first. Ids are more specific and should be used sparingly (e.g., for in-page bookmarks), so they come second.</p>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/attribute-order.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/attribute-order.html')</code></pre>
         </div>
     </div>
 
@@ -178,17 +192,24 @@
             <p><strong>In short, don't add a value.</strong></p>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/boolean-attributes.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/boolean-attributes.html')</code></pre>
         </div>
     </div>
 
-    <div class="section" id="html-reducing-markup">
+    <div class="section" id="html-bem">
         <div class="col">
-            <h3>Reducing markup</h3>
-            <p>Whenever possible, avoid superfluous parent elements when writing HTML. Many times this requires iteration and refactoring, but produces less HTML. Take the following example:</p>
+            <h3>BEM in HTML</h3>
+            <p>BEM stand for Block, Element, Modifier</p>
+            <p>They are used as follows:</p>
+            <ul>
+                <li>Block: The main building block for your component</li>
+                <li>Element: Elements inside the block. Notated by <code>__</code></li>
+                <li>Modifier: If your block or your element needs a modifier. Notated by <code>--</code></li>
+            </ul>
+            <p>In the breadcrumb example, the component is the breadcrumb. Each like is an element, and the currently active page, has a modifier attached to it.</p>
         </div>
         <div class="col">
-            {% highlight html %}@@include('../dist/includes/html/reducing-markup.html'){% endhighlight %}
+            <pre><code class="html">@@include('../dist/includes/html/bem.html')</code></pre>
         </div>
     </div>
 
@@ -196,28 +217,29 @@
         <div class="col">
             <h3>JavaScript generated markup</h3>
             <p>Writing markup in a JavaScript file makes the content harder to find, harder to edit, and less performant. Avoid it whenever possible.</p>
+            <p>Strive for ajax calls instead.</p>
         </div>
     </div>
 
 
 
     <div class="heading" id="css">
-        <h2>CSS</h2>
+        <h2>CSS (LESS)</h2>
     </div>
 
     <div class="section" id="css-syntax">
         <div class="col">
             <h3>Syntax</h3>
             <ul>
-                <li>Use soft tabs with two spaces—they're the only way to guarantee code renders the same in any environment.</li>
+                <li>We use soft tabs with four spaces.</li>
+                <li>Nested elements should be indented once (four spaces).</li>
                 <li>When grouping selectors, keep individual selectors to a single line.</li>
                 <li>Include one space before the opening brace of declaration blocks for legibility.</li>
                 <li>Place closing braces of declaration blocks on a new line.</li>
                 <li>Include one space after <code>:</code> for each declaration.</li>
                 <li>Each declaration should appear on its own line for more accurate error reporting.</li>
-                <li>End all declarations with a semi-colon. The last declaration's is optional, but your code is more error prone without it.</li>
+                <li>End all declarations with a semi-colon.</li>
                 <li>Comma-separated property values should include a space after each comma (e.g., <code>box-shadow</code>).</li>
-                <li>Don't include spaces after commas <em>within</em> <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, <code>hsla()</code>, or <code>rect()</code> values. This helps differentiate multiple color values (comma, no space) from multiple property values (comma with space).</li>
                 <li>Don't prefix property values or color parameters with a leading zero (e.g., <code>.5</code> instead of <code>0.5</code> and <code>-.5px</code> instead of <code>-0.5px</code>).</li>
                 <li>Lowercase all hex values, e.g., <code>#fff</code>. Lowercase letters are much easier to discern when scanning a document as they tend to have more unique shapes.</li>
                 <li>Use shorthand hex values where available, e.g., <code>#fff</code> instead of <code>#ffffff</code>.</li>
@@ -227,14 +249,14 @@
             <p>Questions on the terms used here? See the <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets#Syntax">syntax section of the Cascading Style Sheets article</a> on Wikipedia.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/syntax.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/syntax.css')</code></pre>
         </div>
     </div>
 
     <div class="section" id="css-declaration-order">
         <div class="col">
             <h3>Declaration order</h3>
-            <p>Related property declarations should be grouped together following the order:</p>
+            <p>Try to aim for the following order, grouped by:</p>
             <ol>
                 <li>Positioning</li>
                 <li>Box model</li>
@@ -246,44 +268,28 @@
             <p>For a complete list of properties and their order, please see <a href="http://twitter.github.com/recess">Recess</a>.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/declaration-order.css'){% endhighlight %}
-        </div>
-    </div>
-
-    <div class="section" id="css-import">
-        <div class="col">
-            <h3>Don't use <code>@import</code></h3>
-            <p>Compared to <code>&lt;link&gt;</code>s, <code>@import</code> is slower, adds extra page requests, and can cause other unforeseen problems. Avoid them and instead opt for an alternate approach:</p>
-            <ul>
-                <li>Use multiple <code>&lt;link&gt;</code> elements</li>
-                <li>Compile your CSS with a preprocessor like Sass or Less into a single file</li>
-                <li>Concatenate your CSS files with features provided in Rails, Jekyll, and other environments</li>
-            </ul>
-            <p>For more information, <a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/">read this article by Steve Souders</a>.</p>
-        </div>
-        <div class="col">
-            {% highlight html'){% include css/import.html'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/declaration-order.css')</code></pre>
         </div>
     </div>
 
     <div class="section" id="css-media-queries">
         <div class="col">
             <h3>Media query placement</h3>
-            <p>Place media queries as close to their relevant rule sets whenever possible. Don't bundle them all in a separate stylesheet or at the end of the document. Doing so only makes it easier for folks to miss them in the future. Here's a typical setup.</p>
+            <p>Place media queries inside their relevant rule sets whenever possible. Don't bundle them all in a separate stylesheet or at the end of the document. Doing so only makes it easier for folks to miss them in the future. Here's a typical setup.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/media-queries.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/media-queries.css')</code></pre>
         </div>
     </div>
 
     <div class="section" id="css-prefixed-properties">
         <div class="col">
             <h3>Prefixed properties</h3>
-            <p>When using vendor prefixed properties, indent each property such that the declaration's value lines up vertically for easy multi-line editing.</p>
-            <p>In Textmate, use <strong>Text &rarr; Edit Each Line in Selection</strong> (&#8963;&#8984;A). In Sublime Text 2, use <strong>Selection &rarr; Add Previous Line</strong> (&#8963;&#8679;&uarr;) and <strong>Selection &rarr;  Add Next Line</strong> (&#8963;&#8679;&darr;).</p>
+            <p>It shouldn't be neccessary to add vendor prefixes, as its handled through gulp setup.</p>
+            <p>But, in the rare occasion you do need to, indent each property such that the declaration's value lines up vertically for easy multi-line editing.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/prefixed-properties.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/prefixed-properties.css')</code></pre>
         </div>
     </div>
 
@@ -294,7 +300,7 @@
             <p>The key factor here is error detection—e.g., a CSS validator stating you have a syntax error on Line 183. With a single declaration, there's no missing it. With multiple declarations, separate lines is a must for your sanity.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/single-declarations.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/single-declarations.css')</code></pre>
         </div>
     </div>
 
@@ -314,21 +320,46 @@
             <p>The Mozilla Developer Network has a great article on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">shorthand properties</a> for those unfamiliar with notation and behavior.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/shorthand.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/shorthand.css')</code></pre>
+        </div>
+    </div>
+
+    <div class="section" id="css-specificity">
+        <div class="col">
+            <h3>Specificity</h3>
+            <p>Specificity in CSS relates to the selectors of your class definition. The more specific your selectors are, the more power they have over what is used, and what isn't.</p>
+            <p>Using ID's (#) will always trump over classses (.), that's even if you have 1000+ class selectors. ID always wins.</p>
+            <p>Try to avoid the following:</p>
+            <ul>
+                <li>Using IDs in your CSS</li>
+                <li>Nesting selectors</li>
+                <li>Chaining selectors</li>
+            </ul>
+        </div>
+        <div class="col">
+            <pre><code class="css">@@include('../dist/includes/css/specificity.less')</code></pre>
+        </div>
+    </div>
+
+    <div class="section" id="css-bem">
+        <div class="col">
+            <h3>BEM in less</h3>
+            <p>The following is an example of a breadcrumb, written in less with a BEM twist.</p>
+            <p>While writing the less, it's nested, which keeps it in the same scope and therefore makes it readable.</p>
+            <p>The <code>&</code> operator takes the parent selector, but when compiled, it's not nested anymore. This means no specificity collisions!</p>
+        </div>
+        <div class="col">
+            <pre><code class="css">@@include('../dist/includes/css/bem.less')</code></pre>
         </div>
     </div>
 
     <div class="section" id="css-nesting">
         <div class="col">
             <h3>Nesting in Less and Sass</h3>
-            <p>Avoid unnecessary nesting. Just because you can nest, doesn't mean you always should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested.</p>
-            <p>Additional reading:</p>
-            <ul>
-                <li><a href="http://markdotto.com/2015/07/20/css-nesting/">Nesting in Sass and Less</a></li>
-            </ul>
+            <p>As a part of the BEM methodology, we never nest. There are rare occasions where nesting is unavoidable, or when it does make sense. But, in general, do not nest.</p>
         </div>
         <div class="col">
-            {% highlight scss'){% include css/nesting.scss'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/nesting.less')</code></pre>
         </div>
     </div>
 
@@ -338,7 +369,7 @@
             <p>For improved readability, wrap all math operations in parentheses with a single space between values, variables, and operators.</p>
         </div>
         <div class="col">
-            {% highlight scss'){% include css/operators.scss'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/operators.less')</code></pre>
         </div>
     </div>
 
@@ -349,7 +380,7 @@
             <p>Be sure to write in complete sentences for larger comments and succinct phrases for general notes.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/comments.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/comments.css')</code></pre>
         </div>
     </div>
 
@@ -367,7 +398,7 @@
             <p>It's also useful to apply many of these same rules when creating Sass and Less variable names.</p>
         </div>
         <div class="col">
-            {% highlight css'){% include css/class-names.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/class-names.css')</code></pre>
         </div>
     </div>
 
@@ -387,7 +418,7 @@
             </ul>
         </div>
         <div class="col">
-            {% highlight css'){% include css/selectors.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/selectors.css')</code></pre>
         </div>
     </div>
 
@@ -402,7 +433,7 @@
             </ul>
         </div>
         <div class="col">
-            {% highlight css'){% include css/organization-comments.css'){% endhighlight %}
+            <pre><code class="css">@@include('../dist/includes/css/organization-comments.css')</code></pre>
         </div>
     </div>
 
@@ -411,12 +442,15 @@
             <h3>Editor preferences</h3>
             <p>Set your editor to the following settings to avoid common code inconsistencies and dirty diffs:</p>
             <ul>
-                <li>Use soft-tabs set to two spaces.</li>
+                <li>Use soft-tabs set to four spaces.</li>
                 <li>Trim trailing white space on save.</li>
                 <li>Set encoding to UTF-8.</li>
                 <li>Add new line at end of files.</li>
             </ul>
-            <p>Consider documenting and applying these preferences to your project's <code>.editorconfig</code> file. For an example, see <a href="https://github.com/twbs/bootstrap/blob/master/.editorconfig">the one in Bootstrap</a>. Learn more <a href="http://editorconfig.org">about EditorConfig</a>.</p>
+            <p>Consider documenting and applying these preferences to your project's <code>.editorconfig</code> file. You can use this as a starting point.</p><p>Learn more <a href="http://editorconfig.org">about EditorConfig</a>.</p>
+        </div>
+        <div class="col">
+            <pre><code class="html">@@include('../dist/includes/html/editorconfig.html')</code></pre>
         </div>
     </div>
 
