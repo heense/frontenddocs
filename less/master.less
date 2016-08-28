@@ -63,23 +63,15 @@ People behind:      Lars Hesselberg, @hesselberg
 @import "base/base.tables.less";
 @import "base/base.fonts.less";
 
-
-/* Views
-********************/
-
-
 /* Tighten up margin on last items */
 p:last-child,
 ul:last-child,
-blockquote:last-child{
-    margin-bottom: 0;
-}
-
+blockquote:last-child {margin-bottom: 0;}
 
 
 /*
-* Code
-*/
+ * Code
+ */
 
 @import "components/highlight/default.less";
 
@@ -88,6 +80,7 @@ pre {
     font-family: "PT Mono", Menlo, "Courier New", monospace;
     font-size: 95%;
 }
+
 code {
     padding: 2px 4px;
     font-size: 85%;
@@ -103,21 +96,21 @@ pre {
     white-space: pre;
     white-space: pre-wrap;
 }
+
 pre code {
     padding: 0;
     color: inherit;
     background-color: transparent;
     border: 0;
 }
+
 .highlight {
     margin: 0;
+
+    + .highlight {margin-top: 1rem;}
 }
-.highlight pre {
-    margin-bottom: 0;
-}
-.highlight + .highlight {
-    margin-top: 1rem;
-}
+
+.highlight pre {margin-bottom: 0;}
 
 
 blockquote {
@@ -128,85 +121,53 @@ blockquote {
 }
 
 /*
-* The Grid
-*/
+ * The Grid
+ */
 
 .col {
     padding: 2rem 1rem;
-}
-.col p {
-    max-width: 40rem;
-}
-.col + .col {
-    border-top: 1px solid #dfe1e8;
-    background-color: #f7f7f9;
-}
-@media (min-width: 38em) {
-    .col {
-        padding: 2rem;
+
+    + .col {
+        border-top: 1px solid #dfe1e8;
+        background-color: #f7f7f9;
     }
-}
-@media (min-width: 48em) {
-    .section {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
-    }
-    .col {
+
+    @media (min-width: 38em) {padding: 2rem;}
+
+    @media (min-width: 48em) {
         display: table-cell;
         padding: 3rem;
         vertical-align: top;
-    }
-    .col + .col {
-        border-top: 0;
+
+        + .col {border-top: 0;}
     }
 }
+
+.col p {max-width: 40rem;}
 
 /* Make the ToC a whole section */
-.toc .col + .col {
-    background-color: #fff;
-}
-
+.toc .col + .col {background-color: #fff;}
 
 /*
-* Masthead
-*/
-
-.masthead {
+ * Site header
+ */
+.site-header {
     padding: 3rem 1rem;
     color: rgba(255,255,255,.5);
     text-align: center;
     background-color: #CF423F;
-}
-.masthead a {
-    color: #fff;
-}
-.masthead h1 {
-    color: #fff;
-    margin-bottom: .25rem;
-}
-.masthead .icon {
-    display: inline-block;
-    font-size: 3rem;
-    margin: 0 .5rem;
-}
-.masthead-links {
-    font-size: 2rem;
-}
-.masthead-links a {
-    color: rgba(255,255,255,.5);
-    text-decoration: none;
-    transition: all .15s linear;
-}
-.masthead-links a:hover {
-    color: #fff;
-}
 
-@media (min-width: 38em) {
-    .masthead {
+    @media (min-width: 38em) {
         padding-top: 4rem;
         padding-bottom: 4rem;
     }
+}
+
+.site-header a {color: #fff;}
+
+.site-header h1 {
+    color: #fff;
+    margin-bottom: .25rem;
 }
 
 
@@ -217,39 +178,16 @@ blockquote {
 .heading {
     padding: 2rem 1rem 1.5rem;
     background-color: #dfe1e8;
-}
 
-@media (min-width: 38em) {
-    .heading {
-        padding: 3rem 3rem 2.5rem;
-    }
+    @media (min-width: 38em) {padding: 3rem 3rem 2.5rem;}
 }
 
 .section {
     border-bottom: 1px solid #dfe1e8;
+
+    @media (min-width: 48em) {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
 }
-
-
-/*
-* Footer
-*/
-
-.footer {
-    padding: 3rem 1rem;
-    font-size: 90%;
-    text-align: center;
-}
-.footer p {
-    margin-bottom: .5rem;
-}
-
-.quick-links {
-    list-style: none;
-    margin-left: 0;
-}
-.quick-links li {
-    display: inline;
-}
-
-
-
