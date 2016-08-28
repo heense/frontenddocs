@@ -57,3 +57,8 @@ license your work under the terms of the [MIT License](LICENSE) (if it
 includes code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](docs/LICENSE)
 (if it includes documentation changes).
+
+
+## License
+
+The Novicell Frontend is licensed under the MIT license. (http://opensource.org/licenses/MIT)
