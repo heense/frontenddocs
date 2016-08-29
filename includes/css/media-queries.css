@@ -1,18 +1,35 @@
 /* Bad example */
-.element-avatar { ... }
-.element-selected { ... }
+.block {
+    ...
+
+    &__element {...}
+    &--modifier {...}
+}
 
 @media (min-width:@screen-md) {
-    .element { ...}
-    .element-avatar { ... }
-    .element-selected { ... }
+    .block {
+        ...
+
+        &__element {...}
+        &--modifier {...}
+    }
 }
 
 /* Good example */
-.element {
+.block {
     ...
 
-    @media (min-width:@screen-md) {
+    @media (min-width:@screen-md) {...}
+
+    &--modifier {
         ...
+
+        @media (min-width:@screen-md) {...}
+    }
+
+    &__element {
+        ...
+
+        @media (min-width:@screen-md) {...}
     }
 }
