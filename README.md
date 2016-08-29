@@ -5,6 +5,8 @@ We still need to describe and document:
 * Our gulp setup and how to use it
 * Less in depth -- variables, mixins, etc.
 * Writing our javascript plugins, more specifically our js objects
+* Struture of frontend. Where should which files be placed?
+* Naming of files
 
 
 ## Contribution
