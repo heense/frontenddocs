@@ -78,7 +78,7 @@ gulp.task('icons', function () {
         var useNewer = ignores.indexOf("newer") == -1;
         var useImagemin = ignores.indexOf("imagemin") == -1;
 
-        gulp.start('icons-json')
+        //gulp.start('icons-json')
 
         return gulp.src(b.icons)
             .pipe(plugins.plumber(config.errorHandler("icons")))
