@@ -41,7 +41,6 @@
             <h4><a href="#css">CSS</a></h4>
             <ul>
                 <li><a href="#css-syntax">CSS syntax</a></li>
-                <li><a href="#css-declaration-order">Declaration order</a></li>
                 <li><a href="#css-media-queries">Media query placement</a></li>
                 <li><a href="#css-prefixed-properties">Prefixed properties</a></li>
                 <li><a href="#css-single-declarations">Rules with single declarations</a></li>
@@ -107,6 +106,7 @@
                 <li>Nested elements should be indented once (four spaces).</li>
                 <li>For HTML, always use double quotes, never single quotes.</li>
                 <li>Don't include a trailing slash in self-closing elements — the <a href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag">HTML5 spec</a> says they're optional.</li>
+                <li>N.B. there will be scenarios where it makes sense with two spaces, for instance Drupal. Coordinate with your team.</li>
             </ul>
         </div>
         <div class="col">
@@ -119,8 +119,7 @@
         &lt;img src=&quot;images/company-logo.png&quot; alt=&quot;Company&quot;&gt;
         &lt;h1 class=&quot;header&quot;&gt;Hello, world!&lt;/h1&gt;
     &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
         </div>
     </div>
 
@@ -333,54 +332,6 @@
     margin-bottom: 15px;
     background-color: rgba(0, 0, 0, .5);
     box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
-}
-</code></pre>
-        </div>
-    </div>
-
-    <div class="section" id="css-declaration-order">
-        <div class="col">
-            <h3>Declaration order</h3>
-            <p>Try to aim for the following order, grouped by:</p>
-            <ol>
-                <li>Positioning</li>
-                <li>Box model</li>
-                <li>Typographic</li>
-                <li>Visual</li>
-            </ol>
-            <p>Positioning comes first because it can remove an element from the normal flow of the document and override box model related styles. The box model comes next as it dictates a component's dimensions and placement.</p>
-            <p>Everything else takes place <em>inside</em> the component or without impacting the previous two sections, and thus they come last.</p>
-            <p>For a complete list of properties and their order, please see <a href="http://twitter.github.com/recess">Recess</a>.</p>
-        </div>
-        <div class="col">
-            <pre><code class="css">.declaration-order {
-    /* Positioning */
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-
-    /* Box-model */
-    display: block;
-    float: right;
-    width: 100px;
-    height: 100px;
-
-    /* Typography */
-    font: normal 13px "Helvetica Neue", sans-serif;
-    line-height: 1.5;
-    color: #333;
-    text-align: center;
-
-    /* Visual */
-    background-color: #f5f5f5;
-    border: 1px solid #e5e5e5;
-    border-radius: 3px;
-
-    /* Misc */
-    opacity: 1;
 }
 </code></pre>
         </div>
